@@ -1,8 +1,8 @@
-console.log("esta entrando en game")
+console.log("entrando en game")
 const {Client, Account, Databases, ID, Query } = Appwrite
 const projectId = '650c7efaef00065fc312'
 const databaseId = '65171acbeabf8bafd51e'
-const collectionId = '65171af5c931b1f3888e' //highscores collection
+const collectionId = '6517274ab45bc1c5157e' //highscores collection
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
@@ -11,7 +11,7 @@ const client = new Client()
 const account = new Account(client)
 const database = new Databases(client)
 
-console.log("esta declarando la function register")
+console.log("declarando la function register")
 function register(event) {
     console.log("que hay en register")
     account.create(
