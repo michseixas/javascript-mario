@@ -42,9 +42,9 @@ function register(event) {
     event.preventDefault() //prevent form from reloding the page
 }
 
-// function login(event){
+function login(event){
 
-// }
+}
 
 function showDisplay (){ // when ShowDisplay is called, the element with id "Modal" is hidden.
     const modalElement = document.getElementById('modal')
@@ -58,7 +58,8 @@ function startGame (){
     kaboom({
         global: true,
         fullscreen: true,
-        scale: 2
+        scale: 2,
+        clearColor: [0,0,0,1]
     })
 
     //define speed identifiers:
@@ -78,7 +79,7 @@ function startGame (){
     loadSprite('coin', 'wbKxhcd.png')
     loadSprite('evil-shroom', 'KPO3fR9.png')
     loadSprite('brick', 'pogC9x5.png')
-    loadSprite('block', 'M6rwarW.png')
+    loadSprite('block', 'M6rwarW.png') 
     loadSprite('mario', 'Wb1qfhK.png')
     loadSprite('mushroom', '0wMd92p.png')
     loadSprite('surprise', 'gesQ1KP.png')
@@ -93,28 +94,37 @@ function startGame (){
     loadSprite('blue-evil-mushroom', 'SvV4ueD.png')
     loadSprite('blue-surprise', 'RMqCc1G.png')
 
-    screen("game", ({level, score}) => {
+    scene("game", ({level, score}) => {
         layers(["bg", "obj", "ui"], "obj")
 
-        const map = [
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '==============================   ====='
-        ],
-        [
+        const maps = [
+            [
+                '                                      ',
+                '                                      ',
+                '                                      ',
+                '                                      ',
+                '                                      ',
+                '                                      ',
+                '                                      ',
+                '                                      ',
+                '                                      ',
+                '==============================   ====='
+            ],
+            [
 
+            ]
         ]
-    ]
 
-    const levelCfg = 
+    const levelCfg = {
+        width: 20, //width and height of images
+        height: 20, 
+        '=':[sprite('block'), solid()]
+    }
+
+    const gameLevel = addLevel(maps[level], levelCfg)
     })
+
+    startGame("game", {level:0, score:0})
 
 }
 startGame ()
